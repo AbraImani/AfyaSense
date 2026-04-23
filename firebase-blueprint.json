@@ -1,0 +1,46 @@
+{
+  "entities": {
+    "healthCase": {
+      "title": "Cas de Santé",
+      "description": "Enregistrement d'un diagnostic effectué par un agent de santé",
+      "type": "object",
+      "properties": {
+        "patientName": { "type": "string" },
+        "age": { "type": "integer" },
+        "sex": { "type": "string", "enum": ["M", "F"] },
+        "district": { "type": "string" },
+        "symptoms": { "type": "string" },
+        "temperature": { "type": "number" },
+        "probableCondition": { "type": "string" },
+        "severity": { "type": "string", "enum": ["Faible", "Modéré", "Élevé", "Critique"] },
+        "recommendation": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["patientName", "age", "sex", "district", "symptoms", "temperature", "probableCondition", "severity", "recommendation", "createdAt"]
+    },
+    "epidemicAlert": {
+      "title": "Alerte Épidémique",
+      "description": "Alerte générée automatiquement ou manuellement pour une zone",
+      "type": "object",
+      "properties": {
+        "district": { "type": "string" },
+        "alertType": { "type": "string" },
+        "severity": { "type": "string", "enum": ["Faible", "Modéré", "Élevé"] },
+        "relatedCasesCount": { "type": "integer" },
+        "status": { "type": "string", "enum": ["Actif", "Résolu"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["district", "alertType", "severity", "relatedCasesCount", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/healthCases/{caseId}": {
+      "schema": "healthCase",
+      "description": "Collection des diagnostics individuels"
+    },
+    "/epidemicAlerts/{alertId}": {
+      "schema": "epidemicAlert",
+      "description": "Collection des alertes de district"
+    }
+  }
+}

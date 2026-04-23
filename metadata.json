@@ -1,0 +1,12 @@
+{
+  "name": "AFYASENSE AI",
+  "description": "Plateforme intelligente de triage, détection de risques et alerte épidémique pour agents de santé communautaires.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "AI Diagnosis",
+    "Epidemic Alerts",
+    "Malnutrition Detection"
+  ]
+}
